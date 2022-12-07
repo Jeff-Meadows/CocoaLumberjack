@@ -226,6 +226,14 @@ static int const DDLoggerCount = 3;
 
 @end
 
+@interface DDTestDatabaseLogger ()
+
+@property (readwrite, assign) NSInteger saveTimerSuspended;
+@property (readwrite, assign) dispatch_time_t unsavedTime;
+@property (readwrite, strong) dispatch_source_t saveTimer;
+
+@end
+
 @implementation DDTestDatabaseLogger
 
 - (void)setUnsavedTime

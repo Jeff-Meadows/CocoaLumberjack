@@ -28,11 +28,26 @@
 - (void)updateDeleteTimer;
 - (void)createAndStartDeleteTimer;
 
+
+@property (readwrite, assign) NSInteger saveTimerSuspended;
+@property (readwrite, assign) NSUInteger unsavedCount;
+@property (readwrite, assign) dispatch_time_t unsavedTime;
+@property (readwrite, strong) dispatch_source_t saveTimer;
+@property (readwrite, assign) dispatch_time_t lastDeleteTime;
+@property (readwrite, strong) dispatch_source_t deleteTimer;
+
+
 @end
 
 #pragma mark -
 
 @implementation DDAbstractDatabaseLogger
+
+@synthesize saveInterval = _saveInterval;
+@synthesize saveThreshold = _saveThreshold;
+@synthesize maxAge = _maxAge;
+@synthesize deleteInterval = _deleteInterval;
+@synthesize deleteOnEverySave = _deleteOnEverySave;
 
 - (instancetype)init {
     if ((self = [super init])) {
