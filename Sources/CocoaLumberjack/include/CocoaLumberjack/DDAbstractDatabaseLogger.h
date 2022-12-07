@@ -29,22 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  * All that is needed for a concrete database logger is to extend this class
  * and override the methods in the implementation file that are prefixed with "db_".
  **/
-@interface DDAbstractDatabaseLogger : DDAbstractLogger {
-    
-@protected
-    NSUInteger _saveThreshold;
-    NSTimeInterval _saveInterval;
-    NSTimeInterval _maxAge;
-    NSTimeInterval _deleteInterval;
-    BOOL _deleteOnEverySave;
-    
-    NSInteger _saveTimerSuspended;
-    NSUInteger _unsavedCount;
-    dispatch_time_t _unsavedTime;
-    dispatch_source_t _saveTimer;
-    dispatch_time_t _lastDeleteTime;
-    dispatch_source_t _deleteTimer;
-}
+@interface DDAbstractDatabaseLogger : DDAbstractLogger
 
 /**
  * Specifies how often to save the data to disk.
